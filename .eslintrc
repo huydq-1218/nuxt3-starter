@@ -1,0 +1,52 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "extends": [
+    "sunasteriskrnd",
+  ],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["~", "./app"]
+        ],
+        "extension": [".ts", ".js", ".json", ".vue"]
+      },
+      "webpack": {}
+    }
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "sunasteriskrnd/typescript"
+      ],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": [
+              "**/nuxt.config.ts"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.vue"
+      ],
+      "extends": [
+        "sunasteriskrnd/vue3",
+        "sunasteriskrnd/nuxt"
+      ]
+    }
+  ]
+}
